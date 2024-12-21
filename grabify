@@ -1,22 +1,4 @@
---[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
-local passes, fails, undefined = 0, 0, 0
-local running = 0
 
-local function getGlobal(path)
-	local value = getfenv(0)
-
-	while value ~= nil and path ~= "" do
-		local name, nextValue = string.match(path, "^([^.]+)%.?(.*)$")
-		value = value[name]
-		path = nextValue
-	end
-
-	return value
-end
-
-local function test(name, aliases, callback)
 	running += 1
 
 	task.spawn(function()
